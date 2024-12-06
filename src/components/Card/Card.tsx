@@ -1,25 +1,25 @@
 import Lifts from "../Lifts";
 import Trails from "../Trails";
-import Weather from "../Weather/Weather";
-import { resorts } from "../../assets/resorts";
+import Terrain from "../Terrain";
+import { resorts } from "../../assets/resortsData";
 import "./Card.css";
-import { resortOperationData } from "../../scripts/resortDataScript";
 
-const data = await resortOperationData();
-console.log(data);
+let resortData;
+let liftData: string;
+let trailData: string;
+let terrainData: string;
 
-//import { resortOperationData } from "../../scripts/resortDataScript";
+// Fetching resort data from local JSON file before rendering
+await fetch("src/assets/scrapedResortsData.json")
+  .then((response) => response.json())
+  .then((json) => (resortData = json));
 
-//const data = await resortOperationData();
-
-// console.log(data);
-//import { resortOperationData } from "../../scripts/resortDataScript";
-
-// const data = await resortOperationData();
-// console.log(data);
-// resortOperationData.then(result => {
-//   data = result;
-// });
+// Applying data to appropriate variables
+if (resortData) {
+  liftData = resortData[0]["data"]["liftData"];
+  trailData = resortData[0]["data"]["trailData"];
+  terrainData = resortData[0]["data"]["terrainData"];
+}
 
 function Card() {
   return (
@@ -27,9 +27,9 @@ function Card() {
       <header>
         <img src={resorts.wildcat.logo} alt="Wildcat Mountain logo"></img>
       </header>
-      <Trails />
-      <Lifts />
-      <Weather />
+      <Lifts data={liftData} />
+      <Trails data={trailData} />
+      <Terrain data={terrainData} />
     </>
   );
 }

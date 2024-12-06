@@ -1,14 +1,17 @@
 import { chromium } from "playwright";
+import fs from "fs";
 
-export const resortOperationData = async (): Promise<object> => {
+//import { resorts } from "../assets/resortsData";
+
+export const resortOperationData = async () => {
   // Setup
   const browser = await chromium.launch({ headless: true });
   const context = await browser.newContext();
   const page = await context.newPage();
 
-  const liftsData: string[] = [];
-  const trailsData: string[] = [];
-  const terrainData: string[] = [];
+  // let liftsData: string = '';
+  // let trailsData: string = '';
+  // let terrainData: string = '';
   const numeratorArray: string[] = [];
   let denominatorArray: string[] = [];
 
@@ -56,20 +59,28 @@ export const resortOperationData = async (): Promise<object> => {
   denominatorArray = denominatorArray.map((str) => str.replace(/\s+/g, ""));
 
   // Sorting data into appropriate arrays for exporting
-  liftsData.push(numeratorArray[0], denominatorArray[0]);
-  trailsData.push(numeratorArray[1], denominatorArray[1]);
-  terrainData.push(numeratorArray[2], denominatorArray[2]);
+  const liftData: string = numeratorArray[0].concat(denominatorArray[0]);
+  const trailData: string = numeratorArray[1].concat(denominatorArray[1]);
+  const terrainData: string = numeratorArray[2].concat(denominatorArray[2]);
 
-  //console.log("Lifts open: " + liftsData[0] + liftsData[1]);
-  //console.log("Trails open: " + trailsData[0] + trailsData[1]);
-  //console.log("Terrain open: " + terrainData[0] + terrainData[1]);
+  // console.log(resorts.wildcat.data.liftData);
+  // console.log(resorts.wildcat.data.trailData);
+  // console.log(resorts.wildcat.data.terrainData);
+
+  // Writing to JSON for storage
+  fs.writeFileSync(
+    "src/assets/scrapedResortsData.json",
+    JSON.stringify([
+      { name: "wildcat", data: { liftData, trailData, terrainData } },
+    ])
+  );
 
   // Teardown
   await context.close();
   await browser.close();
 
-  return { liftsData, trailsData, terrainData };
+  //return { liftsData, trailsData, terrainData };
 };
 
-//await resortOperationData();
-//console.log(await resortOperationData());
+await resortOperationData();
+// console.log(await resortOperationData());

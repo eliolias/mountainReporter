@@ -1,8 +1,5 @@
-const Trails = () => {
-    return (
+const Trails = ({ data }: { data: string }) => {
+  return <h1>Trails: {data}</h1>;
+};
 
-    <h1>Trails</h1>
-    )
-}
-
-export default Trails
+export default Trails;

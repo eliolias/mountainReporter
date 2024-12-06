@@ -5,6 +5,6 @@ export const resorts = {
   },
   attitash: {
     name: "Attitash",
-    logo: "https://www.skiwildcat.com/Assets/images/sites/attitashmountain/resort-logo-color.svg"
+    logo: "https://www.skiwildcat.com/Assets/images/sites/attitashmountain/resort-logo-color.svg",
   },
 };
