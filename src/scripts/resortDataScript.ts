@@ -8,10 +8,6 @@ export const resortOperationData = async () => {
   const browser = await chromium.launch({ headless: true });
   const context = await browser.newContext();
   const page = await context.newPage();
-
-  // let liftsData: string = '';
-  // let trailsData: string = '';
-  // let terrainData: string = '';
   const numeratorArray: string[] = [];
   let denominatorArray: string[] = [];
 
@@ -63,10 +59,6 @@ export const resortOperationData = async () => {
   const trailData: string = numeratorArray[1].concat(denominatorArray[1]);
   const terrainData: string = numeratorArray[2].concat(denominatorArray[2]);
 
-  // console.log(resorts.wildcat.data.liftData);
-  // console.log(resorts.wildcat.data.trailData);
-  // console.log(resorts.wildcat.data.terrainData);
-
   // Writing to JSON for storage
   fs.writeFileSync(
     "src/assets/scrapedResortsData.json",
@@ -78,9 +70,6 @@ export const resortOperationData = async () => {
   // Teardown
   await context.close();
   await browser.close();
-
-  //return { liftsData, trailsData, terrainData };
 };
 
 await resortOperationData();
-// console.log(await resortOperationData());
