@@ -11,33 +11,18 @@ const Search = () => {
     setSearchInput(event.target.value);
   };
 
-  // const showElements = useCallback(() => {
-  //   clickedIn = true;
-  //   console.log("INSIDE showElements function: " + clickedIn);
-  //   return clickedIn;
-  // });
-
-  // console.log("OUTSIDE & AFTER showElements function: " + clickedIn);
-
-  //NEED TO FIX TO USE name PROPERTY INSTEAD OF key
   useEffect(() => {
     if (searchInput.length > 0) {
       const filtered = Object.keys(resorts).filter((resort) =>
-        resort.toLowerCase().includes(searchInput.toLowerCase())
+        resorts[resort].name.toLowerCase().includes(searchInput.toLowerCase())
       );
       setFilteredResorts(filtered);
-      console.log(filteredResorts);
       setClickedIn(true);
     } else {
       setFilteredResorts(Object.keys(resorts));
-      setClickedIn(true);
+      setClickedIn(false);
     }
   }, [searchInput]);
-
-  // useEffect(() => {
-  //   showElements();
-  //   console.log("INSIDE USE EFFECT: " + clickedIn);
-  // }, [clickedIn, showElements]);
 
   return (
     <>
@@ -48,7 +33,6 @@ const Search = () => {
             id="search"
             type="text"
             placeholder="  Search for your mountain"
-            // onClick={showElements}
             onChange={handleChange}
             value={searchInput}
           />
@@ -58,7 +42,7 @@ const Search = () => {
         <ul className="results-list" id="list">
           {clickedIn
             ? filteredResorts.map((resort: string) => {
-                return <h3 key={resort}>{resort}</h3>;
+                return <h3 key={resort}>{resorts[resort].name}</h3>;
               })
             : null}
         </ul>
