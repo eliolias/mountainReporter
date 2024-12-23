@@ -5,11 +5,21 @@ const Search = () => {
   const [searchInput, setSearchInput] = useState("");
   const [filteredResorts, setFilteredResorts] = useState(Object.keys(resorts));
   const [clickedIn, setClickedIn] = useState(false);
+  const [currentResort, setCurrentResort] = useState("");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     setSearchInput(event.target.value);
   };
+
+  const updateResort = (event) => {
+    setCurrentResort(event.target);
+
+    console.log(currentResort);
+  };
+
+  // useEffect(() => {
+  // })
 
   useEffect(() => {
     if (searchInput.length > 0) {
@@ -42,7 +52,11 @@ const Search = () => {
         <ul className="results-list" id="list">
           {clickedIn
             ? filteredResorts.map((resort: string) => {
-                return <h3 key={resort}>{resorts[resort].name}</h3>;
+                return (
+                  <h3 key={resort} onClick={updateResort}>
+                    {resorts[resort].name}
+                  </h3>
+                );
               })
             : null}
         </ul>
