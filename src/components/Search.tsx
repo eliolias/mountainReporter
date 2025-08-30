@@ -13,13 +13,15 @@ const Search = () => {
   };
 
   const updateResort = (event) => {
-    setCurrentResort(event.target);
+    console.log(event)
+    setCurrentResort(event.target.innerHTML);
 
-    console.log(currentResort);
+    console.log('current resort updated to ' + currentResort);
   };
 
   // useEffect(() => {
   // })
+  
 
   useEffect(() => {
     if (searchInput.length > 0) {
@@ -32,6 +34,7 @@ const Search = () => {
       setFilteredResorts(Object.keys(resorts));
       setClickedIn(false);
     }
+
   }, [searchInput]);
 
   return (
@@ -61,6 +64,7 @@ const Search = () => {
             : null}
         </ul>
       </div>
+      <div className="placeholder-div">Selected resort: {currentResort}</div>
     </>
   );
 };

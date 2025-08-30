@@ -54,7 +54,7 @@ function Card() {
   return (
     <>
       <header>
-        <img src={resorts.wildcat.logo} alt="Wildcat Mountain logo"></img>
+        <img src={resorts.wildcat.logo} alt="Mountain Logo"></img>
       </header>
       <Search />
       <Lifts data={liftData} />
