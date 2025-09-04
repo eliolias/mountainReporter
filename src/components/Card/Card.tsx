@@ -1,7 +1,7 @@
 import Lifts from "../Lifts";
 import Trails from "../Trails";
 import Terrain from "../Terrain";
-import Search from "../Search";
+import Search from "../Search/Search";
 import { resorts } from "../../assets/resortsData";
 import "./Card.css";
 
