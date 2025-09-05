@@ -1,37 +1,36 @@
 import { useEffect, useState } from "react";
-import { resorts } from "../assets/resortsData";
+import { resorts } from "../../assets/resortsData";
+import { resortSearch } from "./resortSearch";
 
-const Search = () => {
+interface SearchProps {
+  currentResort: string;
+  setCurrentResort: (resort: string) => void;
+}
+
+const Search = ( {currentResort, setCurrentResort}: SearchProps) => {
   const [searchInput, setSearchInput] = useState("");
   const [filteredResorts, setFilteredResorts] = useState(Object.keys(resorts));
   const [clickedIn, setClickedIn] = useState(false);
-  const [currentResort, setCurrentResort] = useState("");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     setSearchInput(event.target.value);
   };
 
-  const updateResort = (event) => {
-    console.log(event)
-    setCurrentResort(event.target.innerHTML);
-
-    console.log('current resort updated to ' + currentResort);
+  const updateResort = (resort: string) => {
+    setCurrentResort(resort);
   };
-
-  // useEffect(() => {
-  // })
+  
+  useEffect(() => {
+    console.log('currentResort state updated to:', currentResort);
+  }, [currentResort]);
   
 
   useEffect(() => {
     if (searchInput.length > 0) {
-      const filtered = Object.keys(resorts).filter((resort) =>
-        resorts[resort].name.toLowerCase().includes(searchInput.toLowerCase())
-      );
-      setFilteredResorts(filtered);
+      setFilteredResorts(resortSearch(searchInput))
       setClickedIn(true);
     } else {
-      setFilteredResorts(Object.keys(resorts));
       setClickedIn(false);
     }
 
@@ -56,7 +55,7 @@ const Search = () => {
           {clickedIn
             ? filteredResorts.map((resort: string) => {
                 return (
-                  <h3 key={resort} onClick={updateResort}>
+                  <h3 key={resort} onClick={() => updateResort(resorts[resort].name)}>
                     {resorts[resort].name}
                   </h3>
                 );
@@ -69,4 +68,4 @@ const Search = () => {
   );
 };
 
-export default Search;
+export default Search; 
