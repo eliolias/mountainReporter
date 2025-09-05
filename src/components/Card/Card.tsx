@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Lifts from "../Lifts";
 import Trails from "../Trails";
 import Terrain from "../Terrain";
@@ -51,12 +52,14 @@ if (resortData) {
 // }
 
 function Card() {
+  const [currentResort, setCurrentResort] = useState("wildcat");
+
   return (
     <>
       <header>
         <img src={resorts.wildcat.logo} alt="Mountain Logo"></img>
       </header>
-      <Search />
+      <Search currentResort={currentResort} setCurrentResort={setCurrentResort}/>
       <Lifts data={liftData} />
       <Trails data={trailData} />
       <Terrain data={terrainData} />

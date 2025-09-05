@@ -2,18 +2,22 @@ import { useEffect, useState } from "react";
 import { resorts } from "../../assets/resortsData";
 import { resortSearch } from "./resortSearch";
 
-const Search = () => {
+interface SearchProps {
+  currentResort: string;
+  setCurrentResort: (resort: string) => void;
+}
+
+const Search = ( {currentResort, setCurrentResort}: SearchProps) => {
   const [searchInput, setSearchInput] = useState("");
   const [filteredResorts, setFilteredResorts] = useState(Object.keys(resorts));
   const [clickedIn, setClickedIn] = useState(false);
-  const [currentResort, setCurrentResort] = useState("");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     setSearchInput(event.target.value);
   };
 
-  const updateResort = (resort) => {
+  const updateResort = (resort: string) => {
     setCurrentResort(resort);
   };
   
