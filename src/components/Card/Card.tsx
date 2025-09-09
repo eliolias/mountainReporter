@@ -52,7 +52,7 @@ if (resortData) {
 // }
 
 function Card() {
-  const [currentResort, setCurrentResort] = useState("Wildcat")
+  const [currentResort, setCurrentResort] = useState("wildcat")
   const currentResortData = resorts[currentResort] || resorts.wildcat.name;
 
   return (
