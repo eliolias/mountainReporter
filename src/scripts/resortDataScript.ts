@@ -1,7 +1,7 @@
 import { chromium } from "playwright";
 import fs from "fs";
 
-//import { resorts } from "../assets/resortsData";
+import { resorts } from "../assets/resortsData.ts";
 
 export const resortOperationData = async () => {
   // Setup
@@ -44,7 +44,7 @@ export const resortOperationData = async () => {
   };
 
   await page.goto(
-    "https://www.skiwildcat.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx"
+    resorts.wildcat.scrapingLink
   );
 
   // Filling the arrays
@@ -63,7 +63,7 @@ export const resortOperationData = async () => {
   fs.writeFileSync(
     "src/assets/scrapedResortsData.json",
     JSON.stringify([
-      { name: "wildcat", data: { liftData, trailData, terrainData } },
+      { name: resorts.wildcat.name, data: { liftData, trailData, terrainData } },
     ])
   );
 

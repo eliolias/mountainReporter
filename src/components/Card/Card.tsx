@@ -52,12 +52,13 @@ if (resortData) {
 // }
 
 function Card() {
-  const [currentResort, setCurrentResort] = useState("wildcat");
+  const [currentResort, setCurrentResort] = useState("Wildcat")
+  const currentResortData = resorts[currentResort] || resorts.wildcat.name;
 
   return (
     <>
       <header>
-        <img src={resorts.wildcat.logo} alt="Mountain Logo"></img>
+        <img src={currentResortData.logo} alt="Mountain Logo"></img>
       </header>
       <Search currentResort={currentResort} setCurrentResort={setCurrentResort}/>
       <Lifts data={liftData} />

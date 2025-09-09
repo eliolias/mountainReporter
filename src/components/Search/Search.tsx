@@ -55,7 +55,7 @@ const Search = ( {currentResort, setCurrentResort}: SearchProps) => {
           {clickedIn
             ? filteredResorts.map((resort: string) => {
                 return (
-                  <h3 key={resort} onClick={() => updateResort(resorts[resort].name)}>
+                  <h3 key={resort} onClick={() => updateResort(resorts[resort].key)}>
                     {resorts[resort].name}
                   </h3>
                 );
