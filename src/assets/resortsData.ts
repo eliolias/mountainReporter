@@ -17,7 +17,7 @@ export const resorts = {
     name: "Attitash",
     logo: "https://www.attitash.com/Assets/images/sites/attitashmountain/resort-logo-color.svg",
     state: "NH",
-    scrapingLink: "",
+    scrapingLink: "https://www.attitash.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx",
   },
   mountSunapee: {
     id: 3,
@@ -25,7 +25,7 @@ export const resorts = {
     name: "Mount Sunapee",
     logo: "https://www.mountsunapee.com/Assets/images/icons/resorts-bug-mountsunapee.svg",
     state: "NH",
-    scrapingLink: "",
+    scrapingLink: "https://www.mountsunapee.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx",
   },
   crotched: {
     id: 4,    
@@ -33,7 +33,7 @@ export const resorts = {
     name: "Crotched",
     logo: "https://www.crotchedmtn.com/Assets/images/sites/crotchedmountain/resort-logo-color.svg",
     state: "NH",
-    scrapingLink: "",
+    scrapingLink: "https://www.crotchedmtn.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx",
   },
 
   stowe: {
@@ -42,7 +42,7 @@ export const resorts = {
     name: "Stowe",
     logo: "https://www.stowe.com/Assets/images/icons/resorts-bug-stowe.svg",
     state: "VT",
-    scrapingLink: "",
+    scrapingLink: "https://www.stowe.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
   },
   mountSnow: {
     id: 6,  
@@ -50,7 +50,7 @@ export const resorts = {
     name: "Mount Snow",
     logo: "https://www.mountsnow.com/Assets/images/icons/resorts-bug-mtsnow.svg",
     state: "VT",
-    scrapingLink: "",
+    scrapingLink: "https://www.mountsnow.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx",
   },
   okemo: {
     id: 7,
@@ -58,7 +58,7 @@ export const resorts = {
     name: "Okemo",
     logo: "https://www.okemo.com/Assets/images/icons/resorts-bug-okemo.svg",
     state: "VT",
-    scrapingLink: "",
+    scrapingLink: "https://www.okemo.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx",
   },
   hunter: {
     id: 8,
@@ -66,6 +66,6 @@ export const resorts = {
     name: "Hunter",
     logo: "https://www.huntermtn.com/Assets/images/icons/resorts-bug-hunter.svg",
     state: "NY",
-    scrapingLink: "",
+    scrapingLink: "https://www.huntermtn.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx",
   },
 };

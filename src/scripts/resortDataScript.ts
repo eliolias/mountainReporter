@@ -44,7 +44,7 @@ export const resortOperationData = async () => {
   };
 
   await page.goto(
-    resorts.wildcat.scrapingLink
+    resorts.mountSunapee.scrapingLink
   );
 
   // Filling the arrays
@@ -63,7 +63,7 @@ export const resortOperationData = async () => {
   fs.writeFileSync(
     "src/assets/scrapedResortsData.json",
     JSON.stringify([
-      { name: resorts.wildcat.name, data: { liftData, trailData, terrainData } },
+      { name: resorts.mountSunapee.name, data: { liftData, trailData, terrainData } },
     ])
   );
 
